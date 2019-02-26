@@ -1,24 +1,19 @@
-// TODO: ADD LABELS.
-// TODO: ADD MENU BAR.
-#include "absolute.h"
+// TODO: ADD ABOUT INFO.
+#include "crypto.h"
 
 Absolute::Absolute(const wxString &title)
-    : wxFrame(NULL, -1, "Crypto", wxDefaultPosition, wxSize(700, 500))
+  : wxFrame(NULL, -1, "Crypto", wxDefaultPosition, wxSize(700, 450))
 {
   
   wxPanel *panel = new wxPanel(this, -1);
-  // LABEL OF SHA256 BOX
-  wxStaticText *label;
   //MENU
-  menubar = new wxMenuBar();
-  /*
+  menubar = new wxMenuBar();  
   fileMenu = new wxMenu();
-  fileMenu->Append(wxID_OPEN, _T("&Open"));
-  fileMenu->AppendSeparator();
-  fileMenu->Append(wxID_EXIT, _T("&Quit"));
+  fileMenu->Append(wxID_ABOUT, _T("&About"));
+  fileMenu->Append(wxID_EXIT, _T("&Exit"));
   menubar->Append(fileMenu, _T("&File"));
   SetMenuBar(menubar);
-  */
+  
   //ENCRYPTION BUTTON
   encb = new wxButton(this, BUTTON1, wxT("ENCRYPT"), wxPoint(175, 110), wxSize(350, 30), 0);
   encb->SetBackgroundColour(*wxBLACK);
@@ -28,19 +23,20 @@ Absolute::Absolute(const wxString &title)
   decb->SetBackgroundColour(*wxBLACK);
   decb->SetForegroundColour(*wxYELLOW);
   //DIFFICULTY BUTTON
-  difb = new wxButton(this, BUTTON3, wxT(""), wxPoint(28, 5), wxSize(20, 20), wxOK, wxDefaultValidator, wxButtonNameStr);
+  difb = new wxButton(this, BUTTON3, wxT(""), wxPoint(52, 10), wxSize(20, 20), wxOK, wxDefaultValidator, wxButtonNameStr);
   difb->SetBackgroundColour(*wxBLACK);
   
   //ENCRYPT STRING BOX
   enc = new wxTextCtrl(this, -1, wxT("Enter string to encrypt..."), wxPoint(175, 5), wxSize(350, 100), wxTE_MULTILINE);
   //DECRYPT STRING BOX
   dec = new wxTextCtrl(this, -1, wxT(""), wxPoint(175, 145), wxSize(350, 100), wxTE_MULTILINE);
-  //KEY DIFFICULTY
-  difbox = new wxTextCtrl(this, -1, _T("2"), wxPoint(5, 5), wxSize(20, 20), wxTE_MULTILINE);
-  //SHA RESULT STRING BOX
-  label = new wxStaticText(this, -1, "SHA256 HASHCODE FOR THE NONECRYPTED TEXT", wxPoint(183, 280), wxSize(350, 50));
+  //KEY DIFFICULTY W/ LABEL
+  diflabel = new wxStaticText(this, -1, "KEY: ", wxPoint(0, 10), wxSize(30, 20));
+  difbox = new wxTextCtrl(this, -1, _T("2"), wxPoint(31, 10), wxSize(20, 20), wxTE_MULTILINE);
+  //SHA RESULT STRING BOX W/ LABEL
+  shalabel = new wxStaticText(this, -1, "SHA256 HASHCODE FOR THE NONECRYPTED TEXT", wxPoint(183, 280), wxSize(350, 50));
   shabox = new wxTextCtrl(this, -1, _T(""), wxPoint(175, 300), wxSize(350, 50), wxTE_MULTILINE);
-
+  // SetSizerAndFit(topsizer);
 }
 
 //EVENTS
@@ -48,6 +44,8 @@ BEGIN_EVENT_TABLE(Absolute, wxFrame)
 EVT_BUTTON(BUTTON1, Absolute::OnPressE)
 EVT_BUTTON(BUTTON2, Absolute::OnPressD)
 EVT_BUTTON(BUTTON3, Absolute::SetDif)
+EVT_MENU(wxID_EXIT, Absolute::OnExit)
+EVT_MENU(wxID_ABOUT, Absolute::OnAbout)
 END_EVENT_TABLE()
 
 //SET KEY(DIFFICULTY)
@@ -110,3 +108,14 @@ void Absolute::OnPressD(wxCommandEvent &event)
   wxString d = wxString::FromUTF8(text);
   enc->SetValue(d);
 }
+//ABOUT
+void Absolute::OnAbout(wxCommandEvent &event)
+{
+  wxMessageBox(wxT("Crypto"), wxT("Title"));
+}
+//EXIT
+void Absolute::OnExit(wxCommandEvent &event)
+{
+  Close(true);
+}
+

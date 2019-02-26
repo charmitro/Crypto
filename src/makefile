@@ -1,2 +1,2 @@
-program: main.cpp absolute.cpp
-	g++ main.cpp absolute.cpp `wx-config --cxxflags --libs` -lcrypto -o Crypto
+program: main.cpp crypto.cpp
+	g++ main.cpp crypto.cpp `wx-config --cxxflags --libs` -lcrypto -o Crypto
