@@ -1,4 +1,4 @@
-// TODO: ADD ABOUT INFO.
+// TODO: 
 #include "crypto.h"
 
 Absolute::Absolute(const wxString &title)
@@ -7,11 +7,13 @@ Absolute::Absolute(const wxString &title)
   
   wxPanel *panel = new wxPanel(this, -1);
   //MENU
-  menubar = new wxMenuBar();  
+  menubar = new wxMenuBar();
   fileMenu = new wxMenu();
-  fileMenu->Append(wxID_ABOUT, _T("&About"));
+  helpMenu = new wxMenu();
   fileMenu->Append(wxID_EXIT, _T("&Exit"));
+  helpMenu->Append(wxID_ABOUT, _T("&About"));
   menubar->Append(fileMenu, _T("&File"));
+  menubar->Append(helpMenu, _T("&Help"));
   SetMenuBar(menubar);
   
   //ENCRYPTION BUTTON
@@ -36,7 +38,7 @@ Absolute::Absolute(const wxString &title)
   //SHA RESULT STRING BOX W/ LABEL
   shalabel = new wxStaticText(this, -1, "SHA256 HASHCODE FOR THE NONECRYPTED TEXT", wxPoint(183, 280), wxSize(350, 50));
   shabox = new wxTextCtrl(this, -1, _T(""), wxPoint(175, 300), wxSize(350, 50), wxTE_MULTILINE);
-  // SetSizerAndFit(topsizer);
+  
 }
 
 //EVENTS
@@ -111,7 +113,7 @@ void Absolute::OnPressD(wxCommandEvent &event)
 //ABOUT
 void Absolute::OnAbout(wxCommandEvent &event)
 {
-  wxMessageBox(wxT("Crypto"), wxT("Title"));
+  wxMessageBox(wxT("This program allows you to encrypt string and also produces their hash code.\n\n Made by Charalampos Mitrodimas."), wxT("Crypto v1.0"));
 }
 //EXIT
 void Absolute::OnExit(wxCommandEvent &event)
