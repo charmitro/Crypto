@@ -2,7 +2,6 @@
 Crypto is an encryption/decryption program. Currently only for LINUX operating systems.
 
 ![](/images/sample.png)
-Format: ![Alt Text](url)
 
 # Install
 
