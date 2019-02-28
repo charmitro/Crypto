@@ -4,8 +4,12 @@
 Absolute::Absolute(const wxString &title)
   : wxFrame(NULL, -1, "Crypto", wxDefaultPosition, wxSize(700, 450))
 {
-  
   wxPanel *panel = new wxPanel(this, -1);
+
+  //SET WINDOW SIZE NOT RESIZABLE
+  SetMinSize(GetSize());
+  SetMaxSize(GetSize());
+
   //MENU
   menubar = new wxMenuBar();
   fileMenu = new wxMenu();
@@ -73,7 +77,7 @@ void Absolute::OnPressE(wxCommandEvent &event)
     text[i] = text[i] + dif;
   }
   wxString p = wxString::FromUTF8(text);
-
+  sort(p.begin(), p.end());
   //SHA256 CODE OF THE STRING
   unsigned char digest[SHA256_DIGEST_LENGTH];
   const char* stringtest = s.c_str();
@@ -89,6 +93,7 @@ void Absolute::OnPressE(wxCommandEvent &event)
       sprintf(&mdString[i*2], "%02x", (unsigned int)digest[i]);
     }
 
+  //SET VALUES  
   shabox->SetValue(mdString);
   dec->SetValue(p);
 }

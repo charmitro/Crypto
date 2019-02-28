@@ -7,6 +7,7 @@
 #include <iostream>
 #include <stdio.h>
 #include <string.h>
+#include <algorithm>
 using namespace std;
 
 class Absolute : public wxFrame
@@ -23,6 +24,7 @@ private:
 
   //BUTTONS
   wxButton *encb, *decb, *difb;
+
   //ENCRYPTION, DECRYPTION, DIFFICULTY AND HASH TEXT BOXES.
   wxTextCtrl *enc, *dec, *difbox, *shabox;
   wxString *test;
@@ -37,6 +39,7 @@ private:
   void OnAbout(wxCommandEvent &event);
   //EXIT MENU
   void OnExit(wxCommandEvent& event);
+
   DECLARE_EVENT_TABLE()
 };
 
