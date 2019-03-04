@@ -61,9 +61,11 @@ void Absolute::SetDif(wxCommandEvent &event)
   dif = wxAtoi(diff);
 }
 
+
 //ENCRYPT TEXT INSIDE ENCRYPTION BOX
 void Absolute::OnPressE(wxCommandEvent &event)
 {
+  
   //BASIC STRING ENCRYPTION BASED ON KEY DIFFICULTY
   wxString peos(enc->GetValue());
   string s = string(peos.mb_str());
@@ -73,11 +75,11 @@ void Absolute::OnPressE(wxCommandEvent &event)
   strcpy(text, s.c_str());
 
   for (int i = 0; (i < n + 1 && text[i] != '\0'); i++)
-  {
-    text[i] = text[i] + dif;
-  }
+    {
+      text[i] = text[i] + dif;
+    }
   wxString p = wxString::FromUTF8(text);
-  sort(p.begin(), p.end());
+
   //SHA256 CODE OF THE STRING
   unsigned char digest[SHA256_DIGEST_LENGTH];
   const char* stringtest = s.c_str();
