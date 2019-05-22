@@ -1,7 +1,6 @@
-#include <wx-3.1/wx/wx.h>
+#include <wx-3.0/wx/wx.h>
 
 class MyApp : public wxApp {
- public:
-  virtual bool OnInit();
+  public:
+    virtual bool OnInit();
 };
-
