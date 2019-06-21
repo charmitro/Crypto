@@ -1,0 +1,9 @@
+# works with clang-format-3.7
+#
+# Most controversial fields are UseTab, IndentWidth, ContinuationIndentWidth, ColumnLimit, BreakBeforeBraces
+
+BasedOnStyle: LLVM
+ContinuationIndentWidth: 4
+IndentWidth: 4
+Language: Cpp
+TabWidth: 4
